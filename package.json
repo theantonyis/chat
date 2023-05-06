@@ -1,0 +1,35 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theantonyis/chat.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "chat"
+  ],
+  "author": "antony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theantonyis/chat/issues"
+  },
+  "homepage": "https://github.com/theantonyis/chat#readme",
+  "dependencies": {
+    "socket.io": "^4.6.1",
+    "sqlite": "^4.2.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  }
+}
