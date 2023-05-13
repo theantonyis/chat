@@ -29,13 +29,13 @@ const io = new Server(server);
 
 io.on('connection', (socket) => {
   console.log('a user connected. id - ' + socket.id);
-  // let userNickname = 'user';
+  let userNickname = 'user';
 
-  // socket.on('set_nickname', (nickname) => {
-  //   userNickname = nickname;
-  // });
+  socket.on('set_nickname', (nickname) => {
+    userNickname = nickname;
+  });
 
-  // socket.on('new_message', (message) => {
-  //   io.emit('message', userNickname + ' : ' + message);
-  // });
+  socket.on('new_message', (message) => {
+    io.emit('message', userNickname + ' : ' + message);
+  });
 });
