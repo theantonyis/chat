@@ -94,6 +94,10 @@ li {
     border-radius: 1rem;
 }
 
+.register-form__title {
+    color: var(--color-white)
+}
+
 .register-form__input {
     width: 100%;
     padding: 0.5rem 1rem;
@@ -126,11 +130,4 @@ li {
 .register-form__button:hover {
     box-shadow: 0 0 5px 0 grey;
     background-color: var(--color-accent-darker);
-}
-
-.btn {
-    border: 1px white solid;
-    border-radius: 4px;
-    background-color: white;
-    font-size: 14px;
-}
+} 
