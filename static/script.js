@@ -1,8 +1,19 @@
-const socket = io();
+const socket = io({
+  auth: {
+    cookie: document.cookie
+  }
+});
 const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
-const user = document.getElementById('name');
+const logout = document.getElementById('logout');
+
+
+
+logout.addEventListener('click', (e) => {
+  document.cookie = 'token=; Max-Age=0';
+  location.assign('/login');
+});
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();

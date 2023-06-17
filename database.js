@@ -25,15 +25,9 @@ dbWrapper
             `CREATE TABLE user(
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 login TEXT,
-                password TEXT
+                password TEXT,
+                salt TEXT
             );`
-        );
-
-        await db.run(
-          `INSERT INTO user (login, password) VALUES 
-          ('antony', '1234'), 
-          ('JavaScript', 'banana'), 
-          ('user1', 'password1');`
         );
 
         await db.run(
@@ -42,8 +36,8 @@ dbWrapper
                 content TEXT,
                 autor INTEGER,
                 FOREIGN KEY(autor) REFERENCES user(user_id)
-            );`
-        );s
+              );`
+            );
       } else {
         console.log(await db.all("SELECT * from user"));
       }
@@ -75,9 +69,11 @@ module.exports = {
     return !!candidate.length;
   },
   addUser: async (user) => {
+    const salt = crypto.randomBytes(16).toString('hex'); 
+    const password = crypto.pbkdf2Sync(user.password, salt, 1000, 64, `sha512`).toString(`hex`); 
     await db.run(
-      `INSERT INTO user (login, password) VALUES (?, ?)`,
-      [user.login, user.password]
+      `INSERT INTO user (login, password, salt) VALUES (?, ?, ?)`,
+      [user.login, password, salt]
     );
   },
   getAuthToken: async (user) => {
@@ -85,9 +81,11 @@ module.exports = {
     if(!candidate.length) {
       throw 'Wrong login';
     }
-    if(candidate[0].password !== user.password) {
+    const {user_id, login, password, salt} = candidate[0];
+    const hash = crypto.pbkdf2Sync(user.password, salt, 1000, 64, `sha512`).toString(`hex`); 
+    if(password !== hash) {
       throw 'Wrong password';
     }
-    return candidate[0].user_id + '.' + candidate[0].login + '.' + crypto.randomBytes(20).toString('hex');
+    return user_id + '.' + login + '.' + crypto.randomBytes(20).toString('hex');
   }
 };
