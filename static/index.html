@@ -7,6 +7,7 @@
     <title>RoboChat</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 	<script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
@@ -14,6 +15,11 @@
         <header class="header">
             <h1>RoboChat</h1>
             <button class="link" id="logout">Logout</button>
+            <div id="weather">
+                <img id="icon" src="">
+                <p id="city"></p>
+                <p id="temp"></p>
+            </div>
         </header>
         <ul id="messages"></ul>
         <form id="form">
@@ -21,5 +27,8 @@
             <input type="submit" class="submit" value="Send">
         </form>
     </main>
+    <footer>
+
+    </footer>
 </body>
 </html>

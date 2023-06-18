@@ -8,6 +8,25 @@ const form = document.getElementById('form');
 const input = document.getElementById('input');
 const logout = document.getElementById('logout');
 
+let url = "http://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kivertsi&aqi=no";
+let xhr = new XMLHttpRequest();
+xhr.responseType = "json";
+xhr.open("GET", url);
+xhr.send();
+let weather = "";
+xhr.onload = function() {
+  weather = xhr.response;
+  if (xhr.status > 400) {
+    $("#result").html("There is some error...");
+  }
+  else {
+    console.log(weather);
+    console.log(weather.current);
+    $('#icon').attr("src", "https:" + weather.current.condition.icon);
+    $('#city').html(weather.location.country + " , " + weather.location.name);
+    $('#temp').html(weather.current.temp_c + "°C");
+  }
+}
 
 
 logout.addEventListener('click', (e) => {
