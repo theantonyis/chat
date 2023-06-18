@@ -34,8 +34,8 @@ dbWrapper
             `CREATE TABLE message(
                 msg_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 content TEXT,
-                autor INTEGER,
-                FOREIGN KEY(autor) REFERENCES user(user_id)
+                author INTEGER,
+                FOREIGN KEY(author) REFERENCES user(user_id)
               );`
             );
       } else {
@@ -52,7 +52,7 @@ module.exports = {
     try {
       return await db.all(
         `SELECT msg_id, content, login, user_id from message
-         JOIN user ON message.autor = user.user_id`
+         JOIN user ON message.author = user.user_id`
         );
     } catch (dbError) {
       console.error(dbError);
@@ -60,7 +60,7 @@ module.exports = {
   },
   addMessage: async (msg, userId) => {
     await db.run(
-      `INSERT INTO message (content, autor) VALUES (?, ?)`,
+      `INSERT INTO message (content, author) VALUES (?, ?)`,
       [msg, userId]
     );
   },
