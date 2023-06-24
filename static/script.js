@@ -8,7 +8,7 @@ const form = document.getElementById('form');
 const input = document.getElementById('input');
 const logout = document.getElementById('logout');
 
-let url = "http://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kivertsi&aqi=no";
+let url = "https://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kivertsi&aqi=no";
 let xhr = new XMLHttpRequest();
 xhr.responseType = "json";
 xhr.open("GET", url);
