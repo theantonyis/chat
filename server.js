@@ -129,4 +129,5 @@ io.on('connection', async (socket) => {
     db.addMessage(message, userId);
     io.emit('message', userNickname + ' : ' + message);
   });
+  
 });
