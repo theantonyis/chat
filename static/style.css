@@ -40,7 +40,8 @@ main {
 }
 
 .header > h1 {
-    margin: -250px;
+    position: absolute;
+    margin-right: 80%;
 }
 
 #form {
@@ -93,6 +94,7 @@ main {
     font-size: 1.5rem;
     border: 0;
     font-family: var(--sf-pro);
+    cursor: pointer;
 }
 
 ul {
@@ -170,10 +172,29 @@ li {
     background-color: var(--color-accent-darker);
 } 
 
+.buttons{
+    display: flex;
+    position: absolute;
+    gap: 15px;
+    margin-left: 40%;
+}
+
 #logout {
-    margin-left: 30%;
     padding: 6px;
     font-family: var(--sf-pro);
+}
+
+#clear {
+    padding: 6px;
+    font-family: var(--sf-pro);
+    visibility: hidden;
+}
+
+#user {
+    display: flex;
+    margin-left: 90%;
+    font-family: var(--sf-pro);
+    font-size: 22px;
 }
 
 .link {

@@ -88,7 +88,7 @@ module.exports = {
     }
     return user_id + '.' + login + '.' + crypto.randomBytes(20).toString('hex');
   },
-  clearChat: async (msg) => {
+  clearChat: async () => {
     await db.run(
       `DELETE FROM message`
     );

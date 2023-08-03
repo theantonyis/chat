@@ -7,9 +7,13 @@ const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const logout = document.getElementById('logout');
+const clear = document.getElementById('clear');
+const buttons = document.getElementsByClassName('buttons');
+
+console.log(document.cookie);
 
 $.ajax({
-    url: 'https://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kivertsi&aqi=no',
+    url: 'https://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kiev&aqi=no',
     type: "GET", /* or type:"GET" or type:"PUT" */
     dataType: "json",
     data: {
@@ -27,10 +31,23 @@ $.ajax({
     }
 });
 
+if(document.cookie.includes("antony")){
+    $('#clear').css('visibility', 'visible');
+}
 
 logout.addEventListener('click', (e) => {
   document.cookie = 'token=; Max-Age=0';
   location.assign('/login');
+});
+
+clear.addEventListener('click', function () {
+    if(document.cookie.includes("antony")) {
+        socket.emit('clear_messages');
+        $("#messages").empty();
+    }
+    else {
+        alert("access denied!");
+    }
 });
 
 form.addEventListener('submit', function(e) {
