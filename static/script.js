@@ -8,7 +8,6 @@ const form = document.getElementById('form');
 const input = document.getElementById('input');
 const logout = document.getElementById('logout');
 const clear = document.getElementById('clear');
-const buttons = document.getElementsByClassName('buttons');
 
 console.log(document.cookie);
 

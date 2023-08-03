@@ -19,8 +19,8 @@ const server = http.createServer((req, res) => {
 			case '/style.css': return res.end(styleFile);
 			case '/auth.js': return res.end(authFile);
 			case '/register': return res.end(registerFile);
-      case '/login': return res.end(loginFile);
-      default: return guarded(req, res);
+            case '/login': return res.end(loginFile);
+            default: return guarded(req, res);
 		}
 	}
 	if(req.method === 'POST') {
