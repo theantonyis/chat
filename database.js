@@ -87,5 +87,10 @@ module.exports = {
       throw 'Wrong password';
     }
     return user_id + '.' + login + '.' + crypto.randomBytes(20).toString('hex');
+  },
+  clearChat: async (msg) => {
+    await db.run(
+      `DELETE FROM message`
+    );
   }
 };
