@@ -309,4 +309,8 @@ li {
     .register-form__title {
         white-space: nowrap;
     }
+
+    .register-form__container{
+        width: 55vw;
+    }
 }
