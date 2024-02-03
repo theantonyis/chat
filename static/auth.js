@@ -1,5 +1,6 @@
 const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
+const regNew = document.getElementById('reg-new');
 
 registerForm?.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -14,7 +15,15 @@ registerForm?.addEventListener('submit', (event) => {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/register');
     xhr.send(user);
-    xhr.onload = () => alert(xhr.response);
+    xhr.onload = () => {
+        if(xhr.status === 200) {
+            alert(xhr.response);
+            window.location.assign('/');
+        }
+        else {
+            return alert(xhr.response);
+        }
+    }
 });
 
 loginForm?.addEventListener('submit', (event) => {
@@ -37,4 +46,8 @@ loginForm?.addEventListener('submit', (event) => {
             return alert(xhr.response);
         }
     }
+});
+
+regNew.addEventListener('click', (event)  => {
+    window.location.assign("/register");
 });
