@@ -12,8 +12,11 @@ const clear = document.getElementById('clear');
 console.log(document.cookie);
 
 $.ajax({
-    url: 'https://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kiev&aqi=no',
-    type: "GET", /* or type:"GET" or type:"PUT" */
+    url: 'https://api.weatherapi.com/v1/current.json?key=b3561c41d0154b909ff135649231806&q=Kyiv&aqi=no',
+    headers: {
+            'Access-Control-Allow-Origin': '*',
+    },
+    type: "GET",
     dataType: "json",
     data: {
     },
